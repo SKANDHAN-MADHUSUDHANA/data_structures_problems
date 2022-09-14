@@ -445,6 +445,125 @@ int main(){
     
 }
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/////////////////////////// UNINON OF TWO SORTED ARRAY AND THERE ARE NO DUPLICATES IN THAT PARTICULAR ARRAY
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void printarr(int arr[], int n){
+    for(int i = 0; i < n; i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+
+void unionOfTwoArrays(int arr1[], int arr2[], int n, int m){
+    int i=0, j=0;
+    while(i<n && j<n){
+        if(arr1[i]<arr2[j]){
+            cout<<arr1[i++]<<" ";
+        }
+        else if(arr2[j]<arr1[i]){
+            cout<<arr2[j++]<<" ";
+        }
+        else{
+            cout<<arr2[j++]<<" ";
+            i++;
+        }
+    }
+    
+    while(i<n){
+        cout<<arr1[i++]<<" ";
+    }
+    
+    while(j<m){
+        cout<<arr2[j++]<<" ";
+    }
+    
+}
+
+int main(){
+    int n;
+    int arr1[100];
+    cout<<"Enter the size of the first array (Make sure its less than 100)"<<endl;
+    cin>>n;
+    cout<<"Enter the elements of the first array (make sure that it is in increasing sorted order and no duplicate elements)"<<endl;
+    for(int i = 0; i < n; i++){
+        cout<<"Enter the element to be inserted at postion :"<<i+1<<endl;
+        cin>>arr1[i];
+    }
+    
+    int m;
+    int arr2[100];
+    cout<<"Enter the size of the second array (Make sure its less than 100)"<<endl;
+    cin>>m;
+    cout<<"Enter the elements of the second array (make sure that it is in increasing sorted order and no duplicate elements)"<<endl;
+    for(int i = 0; i < m; i++){
+        cout<<"Enter the element to be inserted at postion :"<<i+1<<endl;
+        cin>>arr2[i];
+    }
+    
+    unionOfTwoArrays(arr1, arr2, n, m);
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+////////////////////////////////// INTERSECTION OF TWO SORTED ARRAYS
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void printarr(int arr[], int n){
+    for(int i = 0; i < n; i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+
+void intersectionOfTwoArrays(int arr1[], int arr2[], int n, int m){
+    int i=0, j=0;
+    while(i<n && j<n){
+        if(arr1[i]<arr2[j]){
+            i++;
+        }
+        else if(arr2[j]<arr1[i]){
+            j++;
+        }
+        else{
+            cout<<arr2[j++]<<" ";
+            i++;
+        }
+    }
+}
+
+int main(){
+    int n;
+    int arr1[100];
+    cout<<"Enter the size of the first array (Make sure its less than 100)"<<endl;
+    cin>>n;
+    cout<<"Enter the elements of the first array (make sure that it is in increasing sorted order )"<<endl;
+    for(int i = 0; i < n; i++){
+        cout<<"Enter the element to be inserted at postion :"<<i+1<<endl;
+        cin>>arr1[i];
+    }
+    
+    int m;
+    int arr2[100];
+    cout<<"Enter the size of the second array (Make sure its less than 100)"<<endl;
+    cin>>m;
+    cout<<"Enter the elements of the second array (make sure that it is in increasing sorted order )"<<endl;
+    for(int i = 0; i < m; i++){
+        cout<<"Enter the element to be inserted at postion :"<<i+1<<endl;
+        cin>>arr2[i];
+    }
+    
+    intersectionOfTwoArrays(arr1, arr2, n, m);
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 
 
