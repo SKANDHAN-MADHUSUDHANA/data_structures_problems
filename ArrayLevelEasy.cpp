@@ -208,3 +208,62 @@ int main(){
     (ans==-1)?cout<<"The given array is not sorted" << endl :cout<<"The given array is sorted"<<endl;
 }
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+////////////////////////// TO FIND THE TOTAL NUMBER OF UNIQUE ELEMENTS IN THE ARRAY AND PLACING THEM IN THE STARTING PART OF THE ARRAY AND RETURNING THE TOTAL NUMBER OF UNIQUE NUMBER OF ELEMENTS IN THE ARRAY
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void printarr(int arr[], int n){
+    for(int i = 0; i < n; i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+
+int removeDuplicates(int arr[], int n){
+    int i = 0;
+    for(int j = 1; j < n; j++){
+        if(arr[j]!=arr[i]){
+            i++;
+            arr[i] = arr[j];
+        }
+    }
+    return i+1;
+}
+
+int main(){
+    int n;
+    int arr[100];
+    cout<<"Enter the size of the array (Make sure its less than 100)"<<endl;
+    cin>>n;
+    for(int i = 0; i < n; i++){
+        cout<<"Enter the element to be inserted at postion :"<<i+1<<endl;
+        cin>>arr[i];
+    }
+    
+    cout<<"Array before sorting :";
+    printarr(arr,n);
+    
+    int ans = removeDuplicates(arr, n);
+    
+    cout<<"The total no of unique elements in the array are :"<<ans<< endl ;
+    
+    cout<<"Array after sorting :";
+    printarr(arr,ans);
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
