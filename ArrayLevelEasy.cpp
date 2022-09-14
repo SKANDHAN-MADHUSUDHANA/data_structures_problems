@@ -177,5 +177,34 @@ int main(){
     (ans==-1)?cout<<"There is only one element in the array so cannot find the required ans" << endl :cout<<"The second largest element in the array is :"<<ans<<endl;
 }
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-/////////////////////////////
+////////////////////////// TO CHECK IF THE GIVEN ARRAY IS SORTED 
+////// The solution given below is for ascending(increasing order) the same solution with the change in the conditon holds for decreasing order
+    
+#include <bits/stdc++.h>
+using namespace std;
+
+int isSorted(int arr[], int n){
+    
+    for(int i = 0; i < n-1; i++){
+        // for decreasing change the below condition to if(arr[i]<arr[i+1])
+        if(arr[i]>arr[i+1]){
+            return -1;
+        }
+    }
+    return 1;
+}
+
+int main(){
+    int n;
+    int arr[100];
+    cout<<"Enter the size of the array (Make sure its less than 100)"<<endl;
+    cin>>n;
+    for(int i = 0; i < n; i++){
+        cout<<"Enter the element to be inserted at postion :"<<i+1<<endl;
+        cin>>arr[i];
+    }
+    
+    int ans = isSorted(arr, n);
+    (ans==-1)?cout<<"The given array is not sorted" << endl :cout<<"The given array is sorted"<<endl;
+}
 
