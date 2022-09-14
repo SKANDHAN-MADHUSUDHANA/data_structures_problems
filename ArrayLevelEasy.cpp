@@ -355,7 +355,58 @@ int main(){
 }
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/////////////////////////   MOVE ALL ZEROS TO THE END OF THE ARRAY
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void printarr(int arr[], int n){
+    for(int i = 0; i < n; i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+
+void moveAllZerosToEnd(int arr[], int n){
+    int temp[n];
+    int k = 0;
+    for (int i = 0; i < n; i++){
+        if(arr[i]!=0){
+            temp[k++]=arr[i];
+        }
+    }
+    while(k<n){
+        temp[k++]=0;
+    }
     
+    k = 0;
+    
+    for(int l = 0 ; l < n ; l++){
+        arr[l]=temp[k++];
+    }
+}
+
+int main(){
+    int n;
+    int arr[100];
+    cout<<"Enter the size of the array (Make sure its less than 100)"<<endl;
+    cin>>n;
+    for(int i = 0; i < n; i++){
+        cout<<"Enter the element to be inserted at postion :"<<i+1<<endl;
+        cin>>arr[i];
+    }
+    
+    cout<<"Array before moving :";
+    printarr(arr,n);
+    
+    moveAllZerosToEnd(arr, n);
+    
+    cout<<"Array after moving :";
+    printarr(arr,n);
+    
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
 
 
