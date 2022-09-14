@@ -407,7 +407,43 @@ int main(){
 }
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
- 
+///////////////////////////// LENEAR SEARCH (SEARCHING FOR ELEMENTS IN THE ARRAY BY TRAVERSING LEMEARLY)
+    
+#include <bits/stdc++.h>
+using namespace std;
+
+int linearSearch(int arr[], int n, int key){
+    for(int i = 0; i < n; i++){
+        if(arr[i]==key){
+            return i;
+        }
+    }    
+    return -1;
+}
+
+int main(){
+    int n;
+    int arr[100];
+    cout<<"Enter the size of the array (Make sure its less than 100)"<<endl;
+    cin>>n;
+    for(int i = 0; i < n; i++){
+        cout<<"Enter the element to be inserted at postion :"<<i+1<<endl;
+        cin>>arr[i];
+    }
+    
+    int key;
+    cout<<"Enter the element u want to search :"<<endl;
+    cin>>key;
+    
+    int ans = linearSearch(arr, n, key);
+    if(ans == -1){
+        cout<<"The element you are searching for is not present in the array"<<endl;
+    }
+    else{
+        cout<<"The element you are searching for is present in the :"<<ans<<endl;
+    }
+    
+}
 
 
 
