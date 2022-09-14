@@ -243,17 +243,67 @@ int main(){
         cin>>arr[i];
     }
     
-    cout<<"Array before sorting :";
+    cout<<"Array before removing duplicates :";
     printarr(arr,n);
     
     int ans = removeDuplicates(arr, n);
     
     cout<<"The total no of unique elements in the array are :"<<ans<< endl ;
     
-    cout<<"Array after sorting :";
+    cout<<"Array after removing duplicates :";
     printarr(arr,ans);
     
 }
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//////////////////////// LEFT ROTATE ARRAY BY ONE POSITION
+
+    
+#include <bits/stdc++.h>
+using namespace std;
+
+void printarr(int arr[], int n){
+    for(int i = 0; i < n; i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+
+void leftRotate(int arr[], int n){
+    if(n==1||n==0){
+        cout<<"The array is tooo small to rotate"<<endl;
+        return;
+    }
+    int temp = arr[0];
+    int i;
+    for(i = 0; i < n - 1; i++){
+        arr[i]=arr[i+1];
+    }
+    arr[i]=temp;
+}
+
+int main(){
+    int n;
+    int arr[100];
+    cout<<"Enter the size of the array (Make sure its less than 100)"<<endl;
+    cin>>n;
+    for(int i = 0; i < n; i++){
+        cout<<"Enter the element to be inserted at postion :"<<i+1<<endl;
+        cin>>arr[i];
+    }
+    
+    cout<<"Array before rotating :";
+    printarr(arr,n);
+    
+    leftRotate(arr, n);
+    
+    cout<<"Array after rotating :";
+    printarr(arr,n);
+    
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
