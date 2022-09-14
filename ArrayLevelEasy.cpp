@@ -561,7 +561,50 @@ int main(){
 }
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+///////////////////////////// TO FIND THE REPEATED AND MISSING ELEMENT IN THE GIVEN INPUT RANGE [1-N] OF A GIVEN ARRAY OF SIZE N
+    
+#include<iostream>
+using namespace std;
 
+void repeatingNmissing(int arr[], int n){
+    int temp[n+1];
+    
+    for(int i = 0; i <= n; i++){
+        temp[i]=0;
+    }
+    
+    for(int i = 0; i < n; i++){
+        temp[arr[i] - 1] += 1;
+    }
+    
+    int missing,repeated;
+    for(int i = 0; i < n; i++){
+        if(temp[i]==0){
+            missing = i + 1;
+        }
+        if(temp[i]>1){
+            repeated = i + 1;
+        }
+    }
+    
+    cout<<"The missing element is :"<<missing<<endl;
+    cout<<"The repeated element is :"<<repeated<<endl;
+}
+
+int main(){
+    int n ;
+    int arr[100];
+    cout<<"Enter the size of the array (Make sure its less than 100)"<<endl;
+    cin>>n;
+    
+    cout<<"Enter the elements of the array in the range (1 - n) and any one of the number can appear more than once "<<endl;
+    for(int i = 0; i < n; i++){
+        cout<<"Enter the element to be inserted at position :"<<i+1<<endl;
+        cin>>arr[i];
+    }
+    
+    repeatingNmissing(arr, n);
+}
 
 
 
