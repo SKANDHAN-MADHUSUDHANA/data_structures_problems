@@ -303,7 +303,60 @@ int main(){
 }
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//////////////////////////// ROTATING AN ARRAY KEY TIMES TOWARDS RIGHT DIRECTION
+    
+#include <bits/stdc++.h>
+using namespace std;
 
+void printarr(int arr[], int n){
+    for(int i = 0; i < n; i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+
+void leftRotateNtimes(int arr[], int n, int key){
+    if(n==1||n==0){
+        cout<<"The array is tooo small to rotate"<<endl;
+        return;
+    }
+    for(int j = key; j > 0; j--){
+    int temp = arr[n-1];
+    int i;
+    for(i = n-1; i > 0 ; i--){
+        arr[i]=arr[i-1];
+    }
+    arr[i]=temp;
+ }
+}
+
+int main(){
+    int n;
+    int arr[100];
+    cout<<"Enter the size of the array (Make sure its less than 100)"<<endl;
+    cin>>n;
+    for(int i = 0; i < n; i++){
+        cout<<"Enter the element to be inserted at postion :"<<i+1<<endl;
+        cin>>arr[i];
+    }
+    
+    cout<<"Array before rotating :";
+    printarr(arr,n);
+    
+    int key;
+    cout<<"Enter the number of times you want to ratate the above array :"<<endl;
+    cin>>key;
+    
+    leftRotateNtimes(arr, n , key);
+    
+    cout<<"Array after rotating :";
+    printarr(arr,n);
+    
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+ 
 
 
 
