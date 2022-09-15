@@ -52,3 +52,94 @@ int main(){
     cout<<(*s6).age<<endl;
     cout<<s6 -> rollNumber<<endl;
 }
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+///////////////// PROGRAM AND BIT OF THEORY REGARDING SETTING AND RETRIVING VALUES OF PRIVATE ATTRIBUTE OF A CLASS USING PUBLIC FUMCTION DEFINED OR DECLARED IN THE SAME CLASS
+    
+   
+//Program is about accessing private properties using public function which is defined in the same class as the private property that it is trying to use
+
+#include<iostream>
+using namespace std;
+
+class student{
+    public :
+    int age;
+    
+    private :
+    int rollNumber;
+    
+    public :
+    void display(){
+        cout << age <<" "<<rollNumber<<endl;
+    }
+    
+    //to access the private property rollNumber we can do so by creating a public function in the same class
+    int getrollNumber(){
+        return rollNumber;
+    }
+    
+    //to set the value of a private property also we can have a publlic function defined in the same class
+    
+    void setrollNumber(int a){
+        rollNumber = a;
+    }
+    
+};
+
+int main (){
+    student s1;
+    s1.age = 29;
+    //so now we can get the value of a private property rollnumber using the public function getrollNumber
+    cout<<"The rollnumber of s1 is :"<<s1.getrollNumber()<<endl;
+    //so now we can set the value of a private property rollnumber using the public function setrollNumber
+    s1.setrollNumber(420);
+    
+    //Below is the syntax to call a function if the object is created statically
+    s1.display();
+    
+    
+    student * s2 = new student ;
+    //below is the 2 type of syntax to call a function when the object is created dynamicall
+    (*s2).age =  21;
+    (*s2).display();
+    
+    s2 -> age = 22;
+    s2 -> display();
+}
+
+/////////// BUT THE BIG QUESTION IS WHEN WE CAN SOME HOW MANIPULATE THE PRIVATE VALUES WHAT IS THE USE OF HAVING THEM AND AMONG MANY REASON A FEW OF THEM ARE SHOWN BELOW
+
+#include<iostream>
+using namespace std;
+
+class student{
+    public :
+    int age;
+    
+    private :
+    int rollNumber;
+    
+//one of the use of having private property manipulated by public function is we can add certain constraints so that not all of them can change the value of that particular value    
+    void setrollNumber(int a, int pass){
+
+//here we have added the authentication constraint
+        if(pass != 123){
+            return ;
+        }
+
+//here we have added the constraint that the value cannot be negative        
+        if(a < 0){
+            return ;
+        }
+        rollNumber = a;
+    }
+    
+};
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
