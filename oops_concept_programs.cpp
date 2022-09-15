@@ -251,7 +251,36 @@ int main(){
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
- 
+/////////////////// ALL ABOUT DESTRUCTOR
+    
+#include<iostream>
+using namespace std;
+
+class student{
+    public :
+    
+    int age;
+    int rollnumber;
+    
+    //destructor has the properties as constructor
+    //destructor dealocates the memeory of the objects 
+    //destructor is differentiated from constructor using ~ symbol
+    //destructor is called once at the last
+    student(){
+        cout<<"constructor called"<<endl;
+    }
+    ~student(){
+        cout<<"destructor called"<<endl;
+    }
+};
+
+int main(){
+    student s1;
+    //in case of dynamically allocated memeory destructor is not called untill we explicitly delete it
+    student * s2 = new student();
+    delete s2;    
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
