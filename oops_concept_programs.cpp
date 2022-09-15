@@ -138,6 +138,58 @@ class student{
 };
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/////////////////////// CONCEPT AND PROGRAM REGARDING GONSTRUCTORS AND THIS KEYWORD
+/////////// WE CAN USE CONSTRUCTORS TO AVOID THE DEFAULT GARBAGE VALUE BEING SET TO THE CONSTRUCTOR
+    
+    
+//constructor are called only once while creation of object
+//REMEMBER ONCE WE CREATE A CONSTRUCTOR OF ANYTYPE THE DEFAULT CONSTRUCTOR BECOMES INACTIVE SO IF WE WANT parameterized CONSTRUCTOR WE NEED TO ALSO HAVE DEFAULT CONSTRUCTOR EXPLICITLY DECLARED
+#include<iostream>
+using namespace std;
+
+class student{
+    public :
+    
+    int age;
+    int rollnumber;
+    
+    //default constructor (once we create our own constructor the inbuilt constructor becomes inactive)
+    student(){
+        cout<<"constructor called"<<endl;
+    }
+    
+    //parameterized constructor in the below case both the variable name is rollnumber and based on the closest scope the net value at the object calling the constructor becomes zero
+    //Hence to overcome this problem we use THIS keyword and it stores the address of the current object another solution is to have a different name (and THIS is a pointer)
+    student(int rollnumber){
+        this -> rollnumber = rollnumber;
+        cout<<"parameterized constructor called"<<endl;
+    }
+    
+    student(int a, int r){
+        age = a;
+        rollnumber = r;
+        cout<<"Parameterized constructor 2 called"<<endl;
+    }
+};
+  
+int main(){
+    //what happens when we create a new object using the below syntax is (a default constructor is called and its syntax is [objectname.classname();] )
+    //this constructor creates and allocates garbage value for the properties of that object
+    //features of constructors --- same name as class, no return type, no input argument
+    //whenever we create a class automatically the default constructor is called 
+    student s1;
+    
+    //Parameterized constructor
+    student s2(420);
+    //REMEMBER THE SYNTAX TO CALL A CONSTRUCTOR IS SAME AS THAT OF CREATING A NEW OBJECT BUT THAT IS INTURN INTERPERETED IN THE WAY THAT IS MENTIONED ABOVE
+    cout<<s2.rollnumber<<endl;
+    
+    //calling parameterized constructor2
+    student * s3 = new student(29, 421);
+    cout<<s3 -> age<<endl;
+    cout<<(*s3).rollnumber<<endl;
+}
+
 
 
 
