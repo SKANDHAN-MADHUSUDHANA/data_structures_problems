@@ -189,6 +189,69 @@ int main(){
     cout<<s3 -> age<<endl;
     cout<<(*s3).rollnumber<<endl;
 }
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/////////////////// SOME MORE DEFAULT CONSTRUCTORS (COPY CONSTRUCTOR AND COPY ASSIGNMENT OPERATOR)
+    
+//DEFAULT CONSTRUCTORS
+#include<iostream>
+using namespace std;
+
+class student{
+    public :
+    int age;
+    int rollnumber;
+    
+    public :
+    
+    //since we have this constructor the default constructor is inactive hence all the objects should be initialized with 2 parameters
+    student(int a , int r){
+        age = a;
+        rollnumber = r;
+        cout<<"Parameterized constructor called "<<endl;
+    }
+    
+    void display(){
+        cout<<"age :"<<age<<" "<<"rollnumber :"<<rollnumber<<endl;
+    }
+    
+    //copy constructor is a default constructor there is no need to declare it the syntax to use this constructor is (classname objectname(object from which things are copied))
+};
+
+int main(){
+    student s1(29, 420);
+    s1.display();
+    
+    //copy constructor is used
+    student s2(s1);
+    s2.display();
+    
+    //how to use copy constructor in case of dynamic allocation
+    student *s3 = new student(229, 420);
+    s3 -> display();
+    student *s4 = new student(*s3);
+    (*s4).display();
+    
+    //if we want to copy static object values into dynamic then the syntax is
+    student *s5 = new student(s1);
+    s5 -> display();
+    
+    //if we want it the other way around
+    student s6(*s5);
+    s6.display();
+    
+    //if we want to have the same value for two objects after creation of the object we can use the copy assignment operator 
+    //remeber we cannot use constructors twice for any obect so use copy assignment operator insted of equating all the properties
+    
+    student s7(39, 560);
+    s7.display();
+    
+    s7 = s1;
+    s7.display();
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+ 
 
 
 
