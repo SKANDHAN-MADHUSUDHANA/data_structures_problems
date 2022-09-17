@@ -281,7 +281,35 @@ int main(){
     delete s2;    
 }
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/////////// PRACTICE PROBLEMS FOR OOPS
+//ABOUT SENDING OBJECT AS AN ARGUMENT
+#include<iostream>
+using namespace std;
 
+class fraction{
+    private :
+    int numerator;
+    int denominator;
+    
+    public :
+    fraction(int numerator, int denominator){
+        this -> numerator = numerator;
+        this -> denominator = denominator;
+    }
+    
+    void print(){
+        cout<<numerator<<"/"<<denominator;
+    }
+    
+    void add(fraction f2){
+        int lcm = denominator * f2.denominator;
+    }
+};
+
+int main(){
+    fraction f1(10, 2);
+    f1.print();
+}
 
 
 
