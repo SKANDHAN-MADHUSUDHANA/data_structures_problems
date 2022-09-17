@@ -282,8 +282,9 @@ int main(){
 }
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /////////// PRACTICE PROBLEMS FOR OOPS
-//ABOUT SENDING OBJECT AS AN ARGUMENT
-#include<iostream>
+//ABOUT SENDING OBJECT AS AN ARGUMENT (fraction addition and simplification)
+    
+    #include<iostream>
 using namespace std;
 
 class fraction{
@@ -298,18 +299,42 @@ class fraction{
     }
     
     void print(){
-        cout<<numerator<<"/"<<denominator;
+        cout<<"fraction :"<<numerator<<"/"<<denominator<<endl;
     }
     
     void add(fraction f2){
         int lcm = denominator * f2.denominator;
+        int x = (lcm / denominator)*numerator;
+        int y = (lcm / f2.denominator)*f2.numerator;
+        numerator = x + y;
+        denominator = lcm;
+    }
+    void simplify(){
+        int gcd = 1;
+        int j = min(numerator, denominator);
+        for(int i = 1; i < j; i++){
+            if(numerator%i == 0 && denominator%i == 0){
+                gcd = i;
+            }
+        }
+        numerator = numerator / gcd;
+        denominator = denominator / gcd;
     }
 };
 
 int main(){
     fraction f1(10, 2);
     f1.print();
+    fraction f2(5 , 4);
+    f2.print();
+    f1.add(f2);
+    cout<<"fraction f1 after addition of 2 fractions"<<endl;
+    f1.print();
+    cout<<"fraction after simplification(if possible)"<<endl;
+    f1.simplify(); // we can add this in the add function only
+    f1.print();
 }
+
 
 
 
