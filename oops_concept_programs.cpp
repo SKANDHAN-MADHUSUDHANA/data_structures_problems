@@ -303,6 +303,7 @@ class fraction{
     }
     
     void add(fraction f2){
+        // void add(fraction f2){ insted of this we can use a constant reference variable which reduces the no of process and also the space used (fraction const &f2)
         int lcm = denominator * f2.denominator;
         int x = (lcm / denominator)*numerator;
         int y = (lcm / f2.denominator)*f2.numerator;
