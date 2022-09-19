@@ -335,6 +335,46 @@ int main(){
     f1.simplify(); // we can add this in the add function only
     f1.print();
 }
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+////////////////////////////////////SHALLOW COPY AND DEEP COPY USING DYNAMIC ALLOCATION
+    
+#include<iostream>
+#include<string.h>
+using namespace std;
+
+class student{
+    int age;
+    char *name;
+    
+    public:
+    student(int age, char *name){
+        this -> age = age;
+        //shallow copy
+        //this -> name = name;
+    
+        //deep copy
+        this -> name = new char[strlen(name) + 1];
+        strcpy(this -> name, name);
+        
+    }
+    
+    void display(){
+        cout<<name<<" "<<age<<endl;
+    }
+};
+
+int main(){
+    char name[] = "abcd";
+    
+    student s1(9, name);
+    s1.display();
+    
+    name[3] = 'e';
+    
+    student s2(92, name);
+    s2.display();
+}
+
 
 
 
