@@ -374,6 +374,51 @@ int main(){
     student s2(92, name);
     s2.display();
 }
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////CREATING OUR OWN COPY CONSTRUCTOR BECAUSE THE  INBUILT ONE USES DEEP COPY
+
+#include<iostream>
+#include<string.h>
+using namespace std;
+
+class student{
+    private:
+    
+    int age ;
+    char * name;
+    
+    public :
+    student(int age, char * name){
+        this -> age = age;
+        this -> name = new char[strlen(name) + 1];
+        strcpy(this -> name, name);
+    }
+    //CPPY CONSTRUCTOR
+    student(student const &s){
+        this -> age = s.age;
+        this->name = new char[strlen(s.name) + 1];
+        strcpy(this->name, s.name);
+    }
+    
+    void display(){
+        cout<<"age :"<<age<<" " <<"name :"<<name<<endl;
+    }
+        
+    
+};
+
+int main(){
+    char name[100] = "asas";
+    student s1(22,name);
+    s1.display();
+    
+    name[3]='e';
+    student s2(s1);
+    s2.display();
+    s1.display();
+}
+
 
 
 
