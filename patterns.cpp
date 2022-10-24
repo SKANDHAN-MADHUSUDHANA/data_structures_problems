@@ -240,6 +240,32 @@ int main(){
 //The patter is
 /*
 1
+21
+321
+4321
+
+for n = 4;
+*/
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n; 
+    cout<<"Enter the value of n"<<endl;
+    cin>>n;
+    for(int i = 1; i <= n; i++){
+        int p = i; //this is used to obtain the desired output
+        for(int j = 1; j <= i; j++){
+            cout<<p--;
+        }
+        cout<<endl;
+    }
+}
+
+//The patter is
+/*
+1
 23
 456
 78910
