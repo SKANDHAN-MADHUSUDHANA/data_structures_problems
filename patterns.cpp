@@ -345,3 +345,83 @@ int main(){
         cout<<endl;
     }
 }
+
+//The patter is
+/*
+A
+BC
+CDE
+DEFG
+
+for n = 4;
+*/
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n ;
+    cout<<"Enter the value of n"<<endl;
+    cin>>n;
+    
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= i; j++){
+            char a = 'A' + i + j - 2;
+            cout<<a;
+        }
+        cout<<endl;
+    }
+}
+
+//The patter is
+/*
+A
+BB
+CCC
+DDDD
+
+for n = 4;
+*/
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cout<<"Enter the value of n"<<endl;
+    cin>>n;
+    
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= i; j++){
+            char a = 'A' + i - 1;
+            cout<<a;
+        }
+        cout<<endl;
+    }
+}
+
+//The patter is
+/*
+D
+CD
+BCD
+ABCD
+
+for n = 4;
+*/
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cout<<"Enter the value of n"<<endl;
+    cin>>n;
+    
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= i; j++){
+            char a = 'A' + n - i + j - 1 ;
+            cout<<a;
+        }
+        cout<<endl;
+    }
+}
