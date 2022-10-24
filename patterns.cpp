@@ -133,3 +133,81 @@ int main(){
         cout<<endl;
     }
 }
+
+//The pattern is 
+/*
+
+1
+12
+123
+1234
+
+for n = 4;
+*/
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cout<<"Enter the number of rows "<<endl;
+    cin>>n;
+    for(int i = 1; i <+ n; i++){
+        for(int j = 1; j <+ n; j++){
+            cout<<(n-j+1);
+        }
+        cout<<endl;
+    }
+}
+
+//The patter is
+/*
+1
+23
+345
+4567
+
+for n = 4;
+*/
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cout<<"Enter the value of n"<<endl;
+    cin>>n;
+    for (int i = 1; i <= n; i++){
+        int p = i ; // this is used to get the desired pattern
+        for(int j = 1; j <= i; j++){
+            cout<<p++;
+        }
+        cout<<endl;
+    }
+}
+
+//The patter is
+/*
+1
+23
+456
+78910
+
+for n = 4;
+*/
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cout<<"Enter the value of n"<<endl;
+    cin>>n;
+    int p = 1;//this is used to get the desired pattern
+    for (int i = 1; i <= n; i++){
+        for(int j = 1; j <= i; j++){
+            cout<<p++<<" ";
+        }
+        cout<<endl;
+    }
+}
