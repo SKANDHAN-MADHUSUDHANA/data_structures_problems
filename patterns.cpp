@@ -211,7 +211,7 @@ int main(){
     }
 }
 
-//The patter is
+//The pattern is
 /*
 1
 23
@@ -237,7 +237,7 @@ int main(){
     }
 }
 
-//The patter is
+//The pattern is
 /*
 1
 21
@@ -263,7 +263,7 @@ int main(){
     }
 }
 
-//The patter is
+//The pattern is
 /*
 1
 23
@@ -293,7 +293,7 @@ int main(){
 
 ///////Charecter paterns
 
-//The patter is
+//The pattern is
 /*
 ABCD
 ABCD
@@ -319,7 +319,7 @@ int main(){
     }
 }
 
-//The patter is
+//The pattern is
 /*
 ABCD
 BCDE
@@ -346,7 +346,7 @@ int main(){
     }
 }
 
-//The patter is
+//The pattern is
 /*
 A
 BC
@@ -373,7 +373,7 @@ int main(){
     }
 }
 
-//The patter is
+//The pattern is
 /*
 A
 BB
@@ -399,7 +399,7 @@ int main(){
     }
 }
 
-//The patter is
+//The pattern is
 /*
 D
 CD
@@ -421,6 +421,123 @@ int main(){
         for(int j = 1; j <= i; j++){
             char a = 'A' + n - i + j - 1 ;
             cout<<a;
+        }
+        cout<<endl;
+    }
+}
+
+//The pattern is
+/*
+   *
+  **
+ ***
+****
+
+for n = 4;
+*/
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cout<<"Enter the value of n"<<endl;
+    cin>>n;
+    
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= n; j++){
+            if(j > n - i){
+                cout<<"*";
+            }
+            else{
+                cout<<" ";
+            }
+        }
+        cout<<endl;
+    }
+}
+
+//The pattern is
+/*
+   1
+  12
+ 123
+1234
+
+for n = 4;
+*/
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cout<<"Enter the value of n"<<endl;
+    cin>>n;
+    
+    for(int i = 1; i <= n; i++){
+        int p = 1; // this is used to obtain the required pattern
+        for(int j = 1; j <= n; j++){
+            if(j > n - i){
+                cout<<p++;
+            }
+            else{
+                cout<<" ";
+            }
+        }
+        cout<<endl;
+    }
+}
+
+//The pattern is
+/*
+****
+***
+**
+*
+
+for n = 4;
+*/
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cout<<"Enter the value of n"<<endl;
+    cin>>n;
+    
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= n - i + 1; j++){
+            cout<<"*";
+        }
+        cout<<endl;
+    }
+}
+
+
+//The pattern is
+/*
+1234
+123
+12
+1
+
+for n = 4;
+*/
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cout<<"Enter the value of n"<<endl;
+    cin>>n;
+    
+    for(int i = 1; i <= n; i++){
+        int p = 1; // we need this to arrive at the desired result
+        for(int j = 1; j <= n - i + 1; j++){
+            cout<<p++;
         }
         cout<<endl;
     }
