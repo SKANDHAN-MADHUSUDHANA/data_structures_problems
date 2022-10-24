@@ -288,3 +288,60 @@ int main(){
         cout<<endl;
     }
 }
+
+
+
+///////Charecter paterns
+
+//The patter is
+/*
+ABCD
+ABCD
+ABCD
+ABCD
+
+for n = 4;
+*/
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cout<<"Enter the value of n"<<endl;
+    cin>>n;
+    
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= n; j++){
+            char a = 'A' + j - 1;
+            cout<<a;
+        }
+        cout<<endl;
+    }
+}
+
+//The patter is
+/*
+ABCD
+BCDE
+CDEF
+DEFG
+
+for n = 4;
+*/
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cout<<"Enter the value of n"<<endl;
+    cin>>n;
+    
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= n; j++){
+            char a = 'A' + i + j - 2; // i is used to get the starting alphabet and j is used to increment through each row
+            cout<<a;
+        }
+        cout<<endl;
+    }
+}
