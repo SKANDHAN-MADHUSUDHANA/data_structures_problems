@@ -73,13 +73,11 @@ int main(){
     int n;
     cout<<"Enter the number of rows "<<endl;
     cin>>n;
-    int p = 1; // this is used for getting the desired pattern
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < n; j++){
-            cout<<p;
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= n; j++){
+            cout<<i;
         }
         cout<<endl;
-        p++;
     }
 }
 
@@ -102,9 +100,35 @@ int main(){
     int n;
     cout<<"Enter the number of rows "<<endl;
     cin>>n;
-    for(int i = 0; i < n; i++){
+    for(int i = 1; i <= n; i++){
         for(int j = 1; j <= n; j++){
             cout<<j;
+        }
+        cout<<endl;
+    }
+}
+
+// The pattern is
+
+/*
+4321
+4321
+4321
+4321
+
+for n = 4;
+*/
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cout<<"Enter the number of rows "<<endl;
+    cin>>n;
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= n; j++){
+            cout<<(n-j+1);
         }
         cout<<endl;
     }
