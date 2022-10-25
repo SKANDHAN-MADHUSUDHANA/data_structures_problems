@@ -619,3 +619,47 @@ int main(){
         cout<<endl;
     }
 }
+
+
+//The pattern is
+/*
+   1
+  232
+ 34543
+4567654
+
+for n = 4;
+*/
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cout<<"Enter the value of n"<<endl;
+    cin>>n;
+    
+    for(int i = 1; i <= n; i++){
+        int p = i ;
+        int p1 = (i - 1) * 2;
+        for(int j = 1; j <= 2 * n - 1; j++){
+            if(j <= n){
+                if(j < n - i + 1){
+                    cout<<" ";
+                }
+                else{
+                    cout<<p++;
+                }
+            }
+            else{
+                if(p1 >= i){
+                    cout<<p1--;
+                }
+                else{
+                    cout<<" ";
+                }
+            }
+        }
+        cout<<endl;
+    }
+}
