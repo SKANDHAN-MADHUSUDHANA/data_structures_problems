@@ -35,6 +35,7 @@ int main(){
     cout<<n3->data<<endl;
 }
 
+----------------------------------------------------------------------------------
 //Function to print the data parts of the Linked list for statically craeted Nodes
 
 #include<iostream>
@@ -117,6 +118,7 @@ int main(){
     print(node2);
 }
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //Taking the input from the user and creating the linked list on its own
 //and printing the data parts of the linked list
 #include<iostream>
@@ -176,3 +178,132 @@ int main(){
     Node * head = takeInput();
     print(head);
 }
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+    // taling input functions time complexity is being reduced using an extra tail node instead of finding the last node for each insertion
+    
+    #include<iostream>
+using namespace std;
+
+class Node{
+    public:
+        int data;
+        Node * next;
+        
+    Node(int data){
+        this -> data = data;
+        next = NULL;
+    }
+};
+
+Node * takeInput_better(){
+    int data;
+    cout<<"Enter the data of the linked list node (use -1 to terminate)"<<endl;
+    cin>>data;
+    Node * head = NULL;
+    Node * tail = NULL;
+    
+    while(data != -1){
+        Node * newNode = new Node(data); 
+        if(head == NULL){
+            head = newNode;
+            tail = newNode;
+        }
+        else{
+            tail -> next = newNode;
+            tail = tail -> next;
+        }
+    cout<<"Enter the data of the linked list node (use -1 to terminate)"<<endl;
+    cin>>data;
+    }
+    return head;
+}
+
+void print(Node * head){
+    Node * temp = head;
+    cout<<"The elements of the linked list are : ";
+    while(temp != NULL){
+        cout<<temp->data<<" ";
+        temp = temp -> next;
+    }
+    cout<<endl;
+}
+
+int main(){
+    Node * head = takeInput_better();
+    print(head);
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+//gives the count of total number of elements in the linked list
+    
+#include<iostream>
+using namespace std;
+
+class Node{
+    public:
+        int data;
+        Node *  next;
+        
+    Node(int data){
+        this -> data = data;
+        next = NULL;
+    }
+};
+
+Node * takeInput_tail(){
+    int data;
+    cout<<"Enter the data of the node to be inserted (use -1 as the terminator)"<<endl;
+    cin>>data;
+    Node * head = NULL;
+    Node * tail = NULL;
+    
+    while(data != -1){
+        Node * newNode = new Node(data);
+        if(head == NULL){
+            head = newNode;
+            tail = newNode;
+        }
+        else{
+            tail -> next = newNode;
+            tail = tail -> next;
+        }
+        cout<<"Enter the data of the node to be inserted (use -1 as the terminator)"<<endl;
+        cin>>data;
+    }
+    
+    return head;
+}
+
+void print(Node * head){
+    Node * temp = head;
+    cout<<"The elements in the linked list are : ";
+    while(temp != NULL){
+        cout<<temp -> data<<" ";
+        temp = temp -> next;
+    }
+    cout<<endl;
+}
+
+int totalNumberOfNodes(Node * head){
+    Node * temp = head;
+    int count = 0;
+    while(temp != NULL){
+        count++;
+        temp = temp -> next;
+    }
+    return count;
+}
+
+int main(){
+    Node * head = takeInput_tail();
+    print(head);
+    int ans = totalNumberOfNodes(head);
+    cout<<"The total number of nodes in the linked list is : "<<ans<<endl;
+}
+
+
