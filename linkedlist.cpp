@@ -116,3 +116,63 @@ int main(){
     node3 -> next = node4;
     print(node2);
 }
+
+//Taking the input from the user and creating the linked list on its own
+//and printing the data parts of the linked list
+#include<iostream>
+using namespace std;
+
+class Node{
+    public:
+        int data;
+        Node * next;
+        
+    Node(int data){
+        this -> data = data;
+        next = NULL;
+    }
+};
+
+Node * takeInput(){ // since we are returning the head node its return type is a pointer which is of type head
+    int data;
+    cout<<"Enter the data of the new Node (Enter -1 to terminate)"<<endl;
+    cin>>data;
+    Node * head = NULL; //initializing pointer variable to NULL so that it can be used to assign only once
+    while(data != -1){ //the terminator is -1
+        Node * newNode = new Node(data); //creating new node dynamically so that it is not lost due to scope of variables
+        if(head == NULL){
+            head = newNode;  //initializing the first node to the head pointer
+        }
+        
+        //the linking of rest of the nodes in the list is taken care by the below code
+        
+        else{
+            Node * temp = head;
+            while(temp->next!=NULL){
+                temp = temp -> next;
+            }
+            temp->next = newNode;
+        }
+        cout<<"Enter the data of the new Node (Enter -1 to terminate)"<<endl;    
+        cin>>data;
+    }
+    
+    return head;
+}
+
+
+void print(Node * head){
+    Node * cur = head;
+    cout<<"The elements in the linked list are : ";
+    while(cur!=NULL){
+        cout<<cur->data<<" ";
+        cur = cur->next;
+    }
+    cout<<endl;
+}
+
+
+int main(){
+    Node * head = takeInput();
+    print(head);
+}
