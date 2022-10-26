@@ -306,4 +306,84 @@ int main(){
     cout<<"The total number of nodes in the linked list is : "<<ans<<endl;
 }
 
+///// giving out the element found at a particular position which is given by the user
+//the count starts from 0 and goes on
+
+#include<iostream>
+using namespace std;
+
+class Node{
+    public:
+        int data;
+        Node *  next;
+        
+    Node(int data){
+        this -> data = data;
+        next = NULL;
+    }
+};
+
+Node * takeInput_tail(){
+    int data;
+    cout<<"Enter the data of the node to be inserted (use -1 as the terminator)"<<endl;
+    cin>>data;
+    Node * head = NULL;
+    Node * tail = NULL;
+    
+    while(data != -1){
+        Node * newNode = new Node(data);
+        if(head == NULL){
+            head = newNode;
+            tail = newNode;
+        }
+        else{
+            tail -> next = newNode;
+            tail = tail -> next;
+        }
+        cout<<"Enter the data of the node to be inserted (use -1 as the terminator)"<<endl;
+        cin>>data;
+    }
+    
+    return head;
+}
+
+void print(Node * head){
+    Node * temp = head;
+    cout<<"The elements in the linked list are : ";
+    while(temp != NULL){
+        cout<<temp -> data<<" ";
+        temp = temp -> next;
+    }
+    cout<<endl;
+}
+
+int totalNumberOfNodes(Node * head){
+    Node * temp = head;
+    int count = 0;
+    while(temp != NULL){
+        count++;
+        temp = temp -> next;
+    }
+    return count;
+}
+
+int findElement(Node * head , int n){
+    Node * cur = head;
+    while(n != 0){
+        cur = cur -> next;
+        n--;
+    }
+    
+    return cur -> data;
+}
+
+int main(){
+    int key;
+    Node * head = takeInput_tail();
+    cout<<"enter the position you wish (make sure its less than the total number of input elements)"<<endl;
+    cin>>key;
+    int ans = findElement(head,key);
+    cout<<"The element at the provided postion is  : "<<ans<<endl;
+    print(head);
+}
 
