@@ -387,3 +387,93 @@ int main(){
     print(head);
 }
 
+
+/// insertion of node at keyTH position 
+// it can handel insertion at front and also insertion at any position
+//it can also handel NULL errors or segmentaion faults
+
+#include<iostream>
+using namespace std;
+
+class Node{
+    public:
+        int data;
+        Node * next;
+        
+    Node(int data){
+        this -> data = data;
+        next = NULL;
+    }
+};
+
+Node * takeInput(){
+    int data;
+    cout<<"Enter the value of the Node to be inserted (use -1 to terminate) : ";
+    cin>>data;
+    Node * head = NULL;
+    Node * tail = NULL;
+    while(data != -1){
+        Node * newNode = new Node(data);
+        if(head == NULL){
+            head = newNode;
+            tail = newNode;
+        }
+        else{
+            tail -> next = newNode;
+            tail = tail -> next;
+        }
+        cout<<"Enter the value of the Node to be inserted (use -1 to terminate) : ";
+        cin>>data;
+    }
+    return head;
+}
+
+void printLinkedList(Node * head){
+    if(head == NULL){
+        cout<<"The linked list is empty"<<endl;
+        return;
+    }
+    Node * temp = head;
+    cout<<"The elements in the linked list are : ";
+    while (temp != NULL){
+        cout<<temp->data<<" "; 
+        temp = temp -> next;
+    }
+    cout<<endl;
+}
+
+Node * insertNode(Node * head, int key, int data){
+    Node * newNode = new Node(data);
+    Node * temp = head; 
+    if (key == 0){  // this is for insertion at zero position or insertion at front
+        newNode -> next = head;
+        head = newNode;
+        return head;
+    }
+    int count = 0;
+    while(temp != NULL && count < key - 1 ){ //this is to handle segmentation fault or to handle NULL exceptions
+        temp = temp -> next;
+        count++ ;
+    }
+    if(temp != NULL){
+    Node * forget = temp -> next;
+    temp -> next = newNode;
+    newNode -> next = forget;
+    }
+    return head;
+}
+
+int main(){
+    int n, data;
+    Node * head = takeInput();
+    cout<<"Linked list before insertion at a postion " <<endl;
+    printLinkedList(head);
+    cout<<"Enter the postion of insertion : ";
+    cin>>n;
+    cout<<"Enter the data of the Node to be inserted : ";
+    cin>>data;
+    head = insertNode(head , n , data);
+    cout<<"Linked list after insertion at a postion " <<endl;
+    printLinkedList(head);
+}
+
