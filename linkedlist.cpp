@@ -477,3 +477,89 @@ int main(){
     printLinkedList(head);
 }
 
+
+///delete node at any position and also at the start and it controlls seegmentation faults or NULL errors
+
+#include<iostream>
+using namespace std;
+
+class Node{
+  public:
+    int data;
+    Node * next;
+    
+    
+    Node(int data){
+        this -> data = data;
+        next = NULL;
+    }
+};
+
+Node * input(){
+    int data;
+    cout<<"Enter the value of the node to be inserted (Use -1 as a terminator) : ";
+    cin>>data;
+    Node * head = NULL;
+    Node * tail = NULL;
+    
+    while(data != -1){
+        Node * newNode = new Node(data);
+        if(head == NULL){
+            head = newNode;
+            tail = newNode;
+        }
+        else{
+            tail -> next = newNode;
+            tail = tail -> next;
+        }
+    cout<<"Enter the value of the node to be inserted (Use -1 as a terminator) : ";
+    cin>>data;
+    }
+    return head;
+}
+
+void print(Node * head){
+    if(head == NULL){
+        cout<<"The linked list is empty!"<<endl;
+        return;
+    }
+    Node * temp = head;
+    while(temp != NULL){
+        cout<<temp->data<<" ";
+        temp = temp -> next;
+    }
+    cout<<endl;
+}
+
+Node * deleteAtPositon(Node * head, int key){
+    Node * temp = head;
+    if( key == 0){ // to delete if the position is 0 or delete at front
+        head = head -> next;
+        delete(temp);
+        return head;
+    }
+    int count = 0; // delete at any postition
+    while(temp != NULL && count < key - 1){
+        temp = temp -> next;
+        count++;
+    }
+    if(temp != NULL){
+    Node * cur = temp -> next;
+    Node * point = cur -> next;
+    temp -> next = point ;
+    cur -> next = NULL;
+    delete(cur);
+    }
+    return head; 
+}
+
+int main(){
+    Node * head = input();
+    print(head);
+    int key;
+    cout<<"Enter the postion at which the node needs to be delete : ";
+    cin>>key;
+    head = deleteAtPositon(head, key);
+    print(head);
+}
+
