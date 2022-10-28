@@ -800,3 +800,148 @@ int main(){
     cout<<"The mid point of the linked list is : "<<ans<<endl;
     
 }
+
+
+//merging of two sorted linked list in ascending order
+
+    #include<iostream>
+    using namespace std;
+    
+    //this is the creation of node class which is used to create a node of the linked list
+    class Node
+    {
+        public:
+            int data;
+            Node * next;
+            
+        Node(int data)
+        {
+            this -> data = data;
+            next = NULL;
+        }
+    };
+
+    //this is the creation of linked list 
+    //-1 is used as the termimator or to stop taking input
+    Node * takeInput()
+    {
+        int data;
+        cout<<"Enter the data of the node to be inserted (use -1 as the terminator) : ";
+        cin>>data;
+        Node * head = NULL;
+        Node * tail = NULL;
+        
+        while(data != -1)
+        {
+            Node * newNode = new Node(data);
+            if(head == NULL)
+            {
+                head = newNode;
+                tail = newNode;
+            }
+            else
+            {
+                tail -> next = newNode;
+                tail = tail -> next;
+            }
+            cout<<"Enter the data of the node to be inserted (use -1 as the terminator) : ";
+            cin>>data;
+        }
+        return head;
+    }
+
+    //this is the function that helps in printing the linked list
+    void printLinkedList(Node * head)
+    {
+        if(head == NULL)
+        {
+            return;
+        }
+        Node * temp = head;
+        while(temp != NULL)
+        {
+            cout<<temp -> data<<" ";
+            temp = temp -> next;
+        }
+        cout<<endl;
+    }
+
+    //this is the function where two sorted ascending ordered linked list are merged    
+    Node * mergeSortedLinkedList(Node * head1 , Node * head2)
+    {
+        Node * head = NULL;  //head of the merged linked list
+        Node * tail = NULL;  //tail of the merged linked list
+        if(head1 == NULL && head2 == NULL) //condition when both the linked list are empty
+        {
+            cout<<"cannot merge empty linked list ! "<<endl;
+            return head;
+        }
+        if(head1 == NULL and head2 != NULL) //condition when first linked list is empty
+        {
+            head = head2;
+            return head;
+        }
+        if(head2 == NULL and head1 != NULL) //condition when second linked list is empty
+        {
+            head = head1;
+            return head;
+        }
+        if(head1->data < head2-> data) //for the first itteration to assign the merged linked list head and tail
+            {
+                head = head1;
+                tail = head1;
+                head1 = head1 -> next;
+            }
+            else
+            {
+                head = head2;
+                tail = head2;
+                head2 = head2 -> next;
+            }
+        while(head1 != NULL and head2 != NULL) //from here it takes care of the whole processes
+        {
+            if(head1->data <= head2-> data)
+            {
+                tail -> next = head1;
+                tail = tail -> next;
+                head1 = head1 -> next;
+            }
+            else
+            {
+                tail -> next = head2;
+                tail = tail -> next;
+                head2 = head2 -> next;
+            }
+        }
+        if(head1 == NULL) //if 1st linked list is smaller than the second linked list
+        {
+            tail -> next = head2;
+        }
+        if(head2 == NULL) //if 2nd linked list is smaller than the first linked list
+        {
+            tail -> next = head1;
+        }
+        return head;
+    }
+    
+    //this is the main from where all the functions are called accordingly
+    int main()
+    {
+        cout<<"Enter the data of the first linked list ! (make sure its sorted and is in ascending order) "<<endl;
+        Node * head1 = takeInput();
+        cout<<"The first Linked List is : "; 
+        printLinkedList(head1);
+        cout<<endl<<"********************************************************************************************"<<endl;
+        cout<<"********************************************************************************************"<<endl;
+        cout<<"Enter the data of the second linked list ! (make sure its sorted and is in ascending order) "<<endl;
+        Node * head2 = takeInput();
+        cout<<"The second Liked list is : ";
+        printLinkedList(head2);
+        cout<<endl<<"********************************************************************************************"<<endl;
+        cout<<"********************************************************************************************"<<endl;
+        Node * head = mergeSortedLinkedList(head1, head2);
+        cout<<"The resulting sorted linked list is : ";
+        printLinkedList(head);
+        cout<<endl<<"--------------------------------------------------------------------------------------------"<<endl;
+        cout<<"--------------------------------------------------------------------------------------------"<<endl;
+    }
