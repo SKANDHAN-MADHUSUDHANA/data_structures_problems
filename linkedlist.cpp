@@ -642,3 +642,84 @@ int main(){
     head = insertRecursive(head,data,key);
     print(head);
 }
+
+
+//deleting at a position recursively
+#include<iostream>
+using namespace std;
+
+class Node{
+    public:
+        int data;
+        Node * next;
+        
+    Node(int data){
+        this -> data = data;
+        next = NULL;
+    }
+};
+
+
+Node * takeInput(){
+    int data;
+    cout<<"Enter the data of the node to be inserted ( use -1 to terminate the insertion ) : ";
+    cin>>data;
+    Node * head = NULL;
+    Node * tail = NULL;
+    
+    while(data != -1){
+        Node * newNode = new Node(data);
+        if(head == NULL){
+            head = newNode;
+            tail = newNode;
+        }
+        else{
+            tail->next=newNode;
+            tail = tail -> next;
+        }
+    cout<<"Enter the data of the node to be inserted ( use -1 to terminate the insertion ) : ";
+    cin>>data;
+    }
+    
+    return head;
+}
+
+void print(Node * head){
+    if(head == NULL){
+        cout<<"The linked list id empty !"<<endl;
+        return;
+    }
+    
+    Node * temp = head;
+    while(temp != NULL){
+        cout<<temp->data<<" ";
+        temp = temp -> next;
+    }
+    cout<<endl;
+}
+
+Node * deleteRecursively(Node * head, int key){
+    if(head == NULL){
+        return head;
+    }
+    if(key == 0){
+        Node * temp = head;
+        head = head -> next;
+        temp -> next = NULL;
+        delete(temp);
+    }
+    else{
+        head->next = deleteRecursively(head->next , key - 1);
+    }
+    return head;
+}
+
+int main(){
+    int  key;
+    Node * head = takeInput();
+    print(head);
+    cout<<"Enter the position of deletion : ";
+    cin>>key;
+    head = deleteRecursively(head,key);
+    print(head);
+}
