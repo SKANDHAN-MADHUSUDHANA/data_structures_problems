@@ -1,3 +1,360 @@
+//this below program contains all the basic menu driven processes that can be performed on a linked list
+
+    #include<iostream>
+    using namespace std;
+    
+    class Node
+    {
+        public:
+            int data;
+            Node * next;
+            
+        Node(int data)
+        {
+            this -> data = data;
+            next = NULL;
+        }
+    };
+    Node * head = NULL;
+    
+    Node * createLinkedList(){
+        head = NULL;
+        int data;
+        cout<<"Enter the data of the node to be added to the list (use -1 to terminate) : ";
+        cin>>data;
+        Node * tail = NULL;
+        while(data != -1)
+        {
+            Node * newNode = new Node(data);
+            if(head == NULL)
+            {
+                head = newNode;
+                tail = newNode;
+            }
+            else
+            {
+                tail -> next = newNode;
+                tail = tail -> next;
+            }
+            cout<<"Enter the data of the node to be added to the list (use -1 to terminate) : ";
+            cin>>data;
+        }
+        return head;
+    }
+    
+    void displayLinkedList()
+    {
+        if(head == NULL)
+        {
+            cout<<"The linked list is empty !"<<endl;
+            return;
+        }
+        Node * temp = head;
+        cout<<"The linked list is : ";
+        while(temp != NULL)
+        {
+            cout<<temp -> data<<" ";
+            temp = temp -> next;
+        }
+        cout<<endl;
+    }
+    
+    Node * inserAtFront()
+    {
+        int data;
+        cout<<"Enter the data of the node that needs to be inserted : ";
+        cin>>data;
+        Node * newNode = new Node(data);
+        if(head == NULL)
+        {
+            head = newNode;    
+        }
+        else
+        {
+            newNode -> next = head;
+            head = newNode;
+        }
+        return head;
+    }
+    
+    Node * insetAtEnd()
+    {
+        int data;
+        cout<<"Enter the data of the node that needs to be inserted : ";
+        cin>>data;
+        Node * newNode = new Node(data);
+        Node * temp = head;
+        if(head == NULL)
+        {
+            newNode = head;
+            return head;
+        }
+        else
+        {
+            while(temp -> next != NULL)
+            {
+                temp = temp -> next;    
+            }
+            temp -> next = newNode;
+        }
+        return head;
+    }
+    
+    Node * insertAtPosition()
+    {
+        int data, pos, count = 1;
+        cout<<"Enter the positon for insertion : ";
+        cin>>pos;
+        cout<<"Enter the data of insertion : ";
+        cin>>data;
+        Node * newNode = new Node(data);
+        Node * temp = head;
+        if(head == NULL && pos != 1)
+        {
+            cout<<"There are no elements in the linked list so if u want to insert at position 1 choose option 3 !"<<endl;
+            return head;
+        }
+        while(count < pos - 1 && temp != NULL)
+        {
+            temp = temp -> next;
+            count++;
+        }
+        if(temp != NULL)
+        {
+        newNode -> next = temp -> next;
+        temp -> next = newNode;
+        }
+        else
+        {
+            cout<<"U have entered a position greater than the length of the existing linked list ! "<<endl;
+            cout<<"If u wish to insert it at the last choose option 4 ! "<<endl;
+        }
+        return head;
+    }
+    
+    Node * deleteAtFront()
+    {
+        Node * temp = head;
+        if(head == NULL)
+        {
+            cout<<"Cannot delete as there are no nodes to delete ! ";
+            return head;
+        }
+        else
+        {
+            head = head -> next;
+            temp -> next = NULL;
+            delete(temp);
+        }
+        return head;
+    }
+    
+    Node * deleteAtEnd()
+    {
+        Node * temp = head;
+        Node * del = NULL;
+        if(head == NULL)
+        {
+            cout<<"Can not delete at the end as there are no nodes ! "<<endl;
+            return head;
+        }
+        if(head -> next == NULL)
+        {
+            temp = head -> next;
+            head = NULL;
+            delete(temp);
+        }
+        else
+        {
+            while(temp -> next -> next != NULL)
+            {
+                temp = temp -> next;
+            }
+            del = temp -> next;
+            temp -> next = NULL;
+            delete(del);
+        }
+        return head;
+    }
+    
+    Node * deleteAtPosition()
+    {
+        int pos, count = 1;
+        cout<<"Enter the position for deletion : ";
+        cin>>pos;
+        Node * temp = head;
+        Node * del = NULL;
+        if(head == NULL)
+        {
+            cout<<"can not delete from an empty linked list try adding few nodes before deletion! "<<endl;        
+            return head;
+        }
+        while(count < pos - 1 &&  temp != NULL)
+        {
+            temp = temp -> next;
+            count++;
+        }
+        if(head == NULL)
+        {
+            cout<<"The position entered is more than the length of the list ! "<<endl;
+            return head;
+        }
+        else
+        {
+            del = temp -> next;
+            temp -> next = del -> next;
+            delete(del);
+        }
+        return head;
+    }
+    
+    void SearchAnElement()
+    {
+        int data , count = 1;
+        cout<<"Enter the data of the node you want to search : ";
+        cin>>data;
+        Node * temp = head;
+        if(head == NULL)
+        {
+            cout<<"The linked list is empty insert few nodes before searching ! "<<endl;
+            return;
+        }
+        else
+        {
+            while (temp != NULL)
+            {
+                if(temp -> data == data)
+                {
+                    cout <<"The node you are searching for is present at the position : "<<count<<endl;
+                    return;
+                }
+                else
+                {
+                    temp = temp -> next;
+                    count++;
+                }
+            }
+        }
+        cout<<"The node you are searching for is not present in the linked list ! "<<endl;
+        return;
+    }
+    
+    int MidPointOfTheList()
+    {
+        Node * slow = head;
+        Node * fast = head;
+        if(head == NULL)
+        {
+            cout<<"The linked list is empty so we cannot find the mid point of the list ! "<<endl;
+            return 0;
+        }
+        else
+        {
+            while(fast != NULL && fast -> next != NULL)
+            {
+                slow = slow -> next;
+                fast = fast -> next -> next;
+            }
+        }
+        
+        cout<<"The mid point of the list is : "<<slow -> data<<endl;
+        return 0;
+    }
+    
+    int LengthOfTheList()
+    {
+        int count = 0;
+        Node * temp = head;
+        if(head == NULL)
+        {
+            cout<<"The list is empty hence the length is 0 !"<<endl;
+            return 0;
+        }
+        else
+        {
+            while(temp != NULL)
+            {
+                temp = temp -> next;
+                count++;
+            }
+        }
+        cout<<"The length of the linked list is : "<<count<<endl;
+        return 0;
+    }
+    
+    Node * ReverseList()
+    {
+        Node * cur = head;
+        Node * next = head;
+        Node * prev = NULL;
+        if(head == NULL || head -> next == NULL)
+        {
+            cout<<"Empty or list with single node cannot be reversed : "<<endl;
+            return head;
+        }
+        else
+        {
+            while(cur != NULL)
+            {
+                next = cur -> next;
+                cur -> next = prev;
+                prev = cur;
+                cur = next;
+            }
+            head = prev;
+        }
+        return head;
+    }
+    
+    int main()
+    {
+        int n;
+        
+        while(true)
+        {
+            cout<<"******************************************************************"<<endl;
+            cout<<"Choose the operation u want to perform on a linked list ! "<<endl;
+            cout<<"1. Create"<<endl<<"2. Display"<<endl<<"3. Insert at Front"<<endl<<"4. Insert at End"<<endl<<"5. Insert at a Position"<<endl<<"6. Delete at Front"<<endl<<"7. Delete at end"<<endl<<"8. Delete at a position"<<endl
+            <<"9. Search for an element"<<endl<<"10. Mid point of the list"<<endl<<"11. Length of the list"<<endl<<"12. Reverse the list"<<endl<<"13. Exit"<<endl;
+            cout<<"******************************************************************"<<endl;
+            cout<<"Enter your choice : ";
+            cin>>n;
+            cout<<"******************************************************************"<<endl;
+            switch(n)
+            {
+                case 1: createLinkedList();
+                        break;
+                case 2: displayLinkedList();
+                        break;
+                case 3: inserAtFront();
+                        break;
+                case 4: insetAtEnd();
+                        break;
+                case 5: insertAtPosition();
+                        break;
+                case 6: deleteAtFront();
+                        break;
+                case 7: deleteAtEnd();
+                        break;
+                case 8: deleteAtPosition();
+                        break;
+                case 9: SearchAnElement();
+                        break;
+                case 10: MidPointOfTheList();
+                        break;
+                case 11: LengthOfTheList();
+                        break;
+                case 12: ReverseList();
+                        break;
+                case 13:cout<<"Thank You !"<<endl;
+                        cout<<"******************************************************************"<<endl;
+                        exit(0);
+                default: cout<<"Enter a valid choice !"<<endl;
+            } 
+        }    
+    }
+
+
 //Basic linked list 
 //creation of node class
 //creating node class objects both statically and dynamically
