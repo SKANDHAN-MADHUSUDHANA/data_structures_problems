@@ -272,3 +272,212 @@
             }
         }
     }
+
+
+//////Stack implementation using linked list
+//this particular stack can take care of 3 data types integer , float , char
+//it is a menu driven program of all the basic operations that can be performed on a stack
+//it also allows the user to choose the data type  of his interest
+
+    #include<iostream>
+    using namespace std;
+    
+    template <typename T>
+    class Node
+    {
+        public:
+        T data;
+        Node<T> * next;
+        
+        Node(T data)
+        {
+            this -> data = data;
+            next = NULL;
+        }
+    };
+    
+    template <typename T>
+    class Stack
+    {
+        Node<T> * head;
+        int size;
+        
+        public:
+        Stack()
+        {
+            head = NULL;
+            size = 0;
+        }
+        
+        void getSize ()
+        {
+            cout<<"The size of the stack is : "<<size<<endl;
+        }
+        
+        void isEmpty()
+        {
+            if(size == 0)
+            {
+                cout<<"The stack is empty ! "<<endl;
+            }
+            else 
+            {
+                cout<<"The stack is not empty !"<<endl;
+            }
+        }
+        
+        void push(T data)
+        {
+            Node<T> * newNode = new Node<T>(data);
+            newNode -> next = head;
+            head = newNode;
+            size++;
+        }
+        
+        void pop()
+        {
+            if(head == NULL)
+            {
+                cout<<"The stack is empty ! "<<endl;
+                return;
+            }
+            Node<T> * temp = head;
+            head = head -> next;
+            cout<<"The poped element is : "<<temp -> data<<endl;
+            delete(temp);
+            size--;
+        }
+        
+        void top()
+        {
+            if(head == NULL)
+            {
+                cout<<"The stack is empty ! "<<endl;
+                return;
+            }
+            cout<<"The top of the stack is :"<<head -> data<<endl;
+        }
+        
+        void display()
+        {
+            if(head == NULL)
+            {
+                cout<<"The stack is empty ! "<<endl;
+                return;
+            }
+            Node<T> * temp = head;
+            cout<<"The elemets in the stack are :";
+            while(temp != NULL)
+            {
+                cout<<temp->data<<" ";
+                temp = temp -> next;
+            }
+            cout<<endl;
+        }
+    };
+    
+    int main()
+    {
+        int choiceD, choiceP;
+        cout<<"1. Integer"<<endl<<"2. Float"<<endl<<"3. Charecter"<<endl;
+        cout<<"Enter the type of data u wish to store in the stack : ";
+        cin>>choiceD;
+        if(choiceD == 1)
+        {
+            Stack<int> s;
+            int element;
+            while(true)
+            {
+                cout<<"1. Push"<<endl<<"2. Pop"<<endl<<"3. display"<<endl<<"4. Top"<<endl<<"5. Size"<<endl<<"6. Empty??"<<endl<<"7. Exit"<<endl;
+                cout<<"Chose the operation that you would like to perform on the stack : ";
+                cin>>choiceP;
+                switch(choiceP)
+                {
+                    case 1: cout<<"enter the data you wish to push (remeber to push the type of data that u had chosen earlier) : ";
+                            cin>>element;
+                            s.push(element);
+                            break;
+                    case 2: s.pop();
+                            break;
+                    case 3: s.display();
+                            break;
+                    case 4: s.top();
+                            break;
+                    case 5: s.getSize();
+                            break;
+                    case 6: s.isEmpty();
+                            break;
+                    case 7: exit(0);
+                    default: cout<<"Please enter a valid choice ! "<<endl;
+                    
+                }
+            }
+        }
+        
+        else if(choiceD == 2)
+        {
+            Stack<float> s;
+            float element;
+            while(true)
+            {
+                cout<<"1. Push"<<endl<<"2. Pop"<<endl<<"3. display"<<endl<<"4. Top"<<endl<<"5. Size"<<endl<<"6. Empty??"<<endl<<"7. Exit"<<endl;
+                cout<<"Chose the operation that you would like to perform on the stack : ";
+                cin>>choiceP;
+                switch(choiceP)
+                {
+                    case 1: cout<<"enter the data you wish to push (remeber to push the type of data that u had chosen earlier) : ";
+                            cin>>element;
+                            s.push(element);
+                            break;
+                    case 2: s.pop();
+                            break;
+                    case 3: s.display();
+                            break;
+                    case 4: s.top();
+                            break;
+                    case 5: s.getSize();
+                            break;
+                    case 6: s.isEmpty();
+                            break;
+                    case 7: exit(0);
+                    default: cout<<"Please enter a valid choice ! "<<endl;
+                    
+                }
+            }
+        }
+        else if(choiceD == 3)
+        {
+            Stack<char> s;
+            char element;
+            while(true)
+            {
+                cout<<"1. Push"<<endl<<"2. Pop"<<endl<<"3. display"<<endl<<"4. Top"<<endl<<"5. Size"<<endl<<"6. Empty??"<<endl<<"7. Exit"<<endl;
+                cout<<"Chose the operation that you would like to perform on the stack : ";
+                cin>>choiceP;
+                switch(choiceP)
+                {
+                    case 1: cout<<"enter the data you wish to push (remeber to push the type of data that u had chosen earlier) : ";
+                            cin>>element;
+                            s.push(element);
+                            break;
+                    case 2: s.pop();
+                            break;
+                    case 3: s.display();
+                            break;
+                    case 4: s.top();
+                            break;
+                    case 5: s.getSize();
+                            break;
+                    case 6: s.isEmpty();
+                            break;
+                    case 7: exit(0);
+                    default: cout<<"Please enter a valid choice ! "<<endl;
+                    
+                }
+            }
+        }
+        else
+        {
+            cout<<"Enter a valid choice ! "<<endl;
+        }
+    }
