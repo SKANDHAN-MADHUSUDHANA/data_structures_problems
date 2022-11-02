@@ -481,3 +481,29 @@
             cout<<"Enter a valid choice ! "<<endl;
         }
     }
+
+
+////there is also presence of inbuilt stack which can be made use of
+
+#include<iostream>
+using namespace std;
+#include<stack>
+
+int main()
+{
+    stack<int> s1;
+    s1.push(1);
+    s1.push(1);
+    s1.push(1);
+    s1.push(1);
+    cout<<s1.size()<<endl;
+    cout<<s1.empty()<<endl;
+    s1.pop();
+    s1.pop();
+    s1.pop();
+    s1.pop();
+    cout<<s1.size()<<endl;
+    cout<<s1.empty()<<endl;
+    cout<<s1.top()<<endl;
+}
+
